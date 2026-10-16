@@ -5,8 +5,15 @@ const loginFeedback = document.getElementById('loginFeedback');
 const emailInput = document.getElementById('loginEmail');
 const passwordConfirm = document.getElementById('adminPasswordConfirm');
 const passwordConfirmLabel = document.getElementById('adminPasswordConfirmLabel');
+const clientName = document.getElementById('clientName');
+const clientNameLabel = document.getElementById('clientNameLabel');
+const clientPasswordConfirm = document.getElementById('clientPasswordConfirm');
+const clientPasswordConfirmLabel = document.getElementById('clientPasswordConfirmLabel');
+const clientSignupToggle = document.getElementById('clientSignupToggle');
 const adminAuth = window.LakeSideAdminAuth;
+const clientAuth = window.LakeSideClientAuth;
 const requestedAdminLogin = new URLSearchParams(window.location.search).get('role') === 'admin';
+let clientSignupMode = false;
 
 function normalizedEmail(value) {
   return value.trim().toLowerCase();
@@ -41,11 +48,40 @@ function updateAdminPasswordSetup() {
   }
 }
 
+function updateClientSignupMode() {
+  const clientRegistration = clientSignupMode && !requestedAdminLogin;
+  clientNameLabel.hidden = !clientRegistration;
+  clientName.required = clientRegistration;
+  clientPasswordConfirmLabel.hidden = !clientRegistration;
+  clientPasswordConfirm.required = clientRegistration;
+  clientSignupToggle.hidden = requestedAdminLogin;
+  clientSignupToggle.textContent = clientSignupMode
+    ? 'Already registered? Sign in'
+    : 'New client? Create an account';
+  loginForm.querySelector('.login-submit').textContent = clientRegistration ? 'Create client account' : 'Sign in';
+  passwordInput.autocomplete = clientRegistration ? 'new-password' : 'current-password';
+  if (clientRegistration) {
+    passwordInput.minLength = 8;
+    passwordInput.placeholder = 'Create at least 8 characters';
+  } else if (!passwordConfirm.required) {
+    passwordInput.removeAttribute('minlength');
+    passwordInput.placeholder = 'Enter your password';
+  }
+  clientPasswordConfirm.value = '';
+  updateAdminPasswordSetup();
+}
+
 if (requestedAdminLogin) {
   emailInput.value = getAdminEmail();
 }
 emailInput.addEventListener('input', updateAdminPasswordSetup);
-updateAdminPasswordSetup();
+clientSignupToggle.addEventListener('click', () => {
+  clientSignupMode = !clientSignupMode;
+  loginFeedback.hidden = true;
+  loginFeedback.textContent = '';
+  updateClientSignupMode();
+});
+updateClientSignupMode();
 
 passwordToggle.addEventListener('click', () => {
   const showingPassword = passwordInput.type === 'password';
@@ -69,6 +105,9 @@ loginForm.addEventListener('submit', async (event) => {
     }
 
     if (isAdminEmail) {
+      if (clientSignupMode) {
+        throw new Error('The admin email cannot be used to create a client account.');
+      }
       if (!account) {
         if (email !== adminAuth.bootstrapEmail) {
           throw new Error('Admin account setup is unavailable for this email.');
@@ -86,7 +125,21 @@ loginForm.addEventListener('submit', async (event) => {
       return;
     }
 
-    sessionStorage.setItem('lakesideDemoUser', JSON.stringify({ email, role: 'client' }));
+    let clientAccount;
+    if (clientSignupMode) {
+      if (password.length < 8 || password !== clientPasswordConfirm.value) {
+        throw new Error('Use a password of at least 8 characters and make sure both password fields match.');
+      }
+      clientAccount = await clientAuth.createAccount(email, clientName.value, password);
+    } else {
+      clientAccount = await clientAuth.authenticate(email, password);
+    }
+
+    sessionStorage.setItem('lakesideDemoUser', JSON.stringify({
+      email: clientAccount.email,
+      name: clientAccount.name,
+      role: 'client'
+    }));
     if (sessionStorage.getItem('lakesidePendingEvent')) {
       window.location.href = 'index.html#events';
       return;

@@ -330,7 +330,7 @@
             </div>
             <label>
               Email
-              <input type="email" name="email" placeholder="you@example.com" required />
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
             </label>
             <label>
               Location
@@ -476,7 +476,7 @@
           <div class="field-grid two-col">
             <label>
               Email
-              <input type="email" name="email" placeholder="you@example.com" required />
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" readonly required />
             </label>
             <label>
               Number of participants
@@ -492,8 +492,8 @@
             <textarea name="requirements" rows="3" placeholder="Dietary concerns, accessibility, gear, etc."></textarea>
           </label>
           <p class="booking-feedback" id="bookingFeedback" role="status" aria-live="polite" hidden></p>
-          <p class="prototype-notice">Demo mode: bookings are saved only in this browser. Online Paystack checkout is not connected.</p>
-          <button type="submit" class="primary-btn full-width">Save demo booking</button>
+          <p class="prototype-notice">Paystack checkout opens for the calculated total. This prototype cannot verify payment or confirm your booking; confirmation requires server-side verification.</p>
+          <button type="submit" class="primary-btn full-width">Pay with Paystack</button>
         </form>
       </div>
     </div>
@@ -510,6 +510,7 @@
 
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <script src="featured-events.js"></script>
     <script src="script.js"></script>
   </body>

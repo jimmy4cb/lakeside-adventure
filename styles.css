@@ -1058,6 +1058,23 @@ th {
   min-height: 52px;
 }
 
+.login-mode-toggle {
+  display: block;
+  margin: 1rem auto 0;
+  padding: 0.4rem 0.7rem;
+  border: 0;
+  background: transparent;
+  color: var(--brand-dark);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.login-mode-toggle:hover,
+.login-mode-toggle:focus-visible {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
 .login-feedback {
   margin: 1rem 0 0;
   border: 1px solid rgba(215, 135, 45, 0.28);

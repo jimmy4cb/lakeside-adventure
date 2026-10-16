@@ -140,6 +140,7 @@ function openBooking(button) {
     document.getElementById('selectedEventDate').value = activeEvent.date;
     document.getElementById('selectedEventLocation').value = activeEvent.location;
     bookingForm.querySelector('[name="email"]').value = currentUser.email;
+    bookingForm.querySelector('[name="fullName"]').value = currentUser.name || '';
     bookingFeedback.hidden = true;
     bookingFeedback.textContent = '';
     updateBookingTotal();
@@ -185,36 +186,68 @@ bookingForm?.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const eventName = selectedEventInput.value;
-  const eventPrice = eventPricesKes[eventName];
+  const eventPrice = activeEvent?.price || eventPricesKes[eventName];
   const participants = Number(participantsInput.value);
   const emailInput = bookingForm.querySelector('[name="email"]');
   const nameInput = bookingForm.querySelector('[name="fullName"]');
 
-  if (!eventPrice || !Number.isInteger(participants) || participants < 1 || participants > 12 || !emailInput || !nameInput) {
+  if (!eventPrice || !Number.isInteger(participants) || participants < 1 || participants > 12 || !emailInput || !nameInput || !emailInput.value || !nameInput.value.trim()) {
     setToast('Please check your event, email, and participant count.');
     return;
   }
 
-  const reference = `DEMO-${Date.now()}`;
-  const bookings = readLocalRecords('lakesideDemoBookings');
-  bookings.unshift({
-    reference,
-    email: emailInput.value,
-    name: nameInput.value.trim(),
-    event: eventName,
-    eventDate: activeEvent?.date || '',
-    location: activeEvent?.location || '',
-    participants,
-    amount: eventPrice * participants,
-    status: 'pending',
-    createdAt: new Date().toISOString()
-  });
-  localStorage.setItem('lakesideDemoBookings', JSON.stringify(bookings));
-  bookingFeedback.textContent = `Demo booking ${reference} is saved as awaiting payment. This local prototype does not charge or verify payments.`;
-  bookingFeedback.hidden = false;
-  setToast('Demo booking saved. No payment was processed.');
-  bookingForm.reset();
-  closeModal();
+  if (!window.PaystackPop) {
+    setToast('Paystack could not be loaded. Please check your connection and try again.');
+    return;
+  }
+
+  const amount = eventPrice * participants * 100;
+  const reference = `TICKET_${Date.now()}_${crypto.randomUUID()}`;
+  payButton.disabled = true;
+
+  try {
+    const handler = window.PaystackPop.setup({
+      key: 'pk_live_10a548b4501caa4b4971002a957f26bc43b11acb',
+      email: emailInput.value.trim(),
+      amount,
+      currency: 'KES',
+      ref: reference,
+      label: eventName,
+      callback: (response) => {
+        const bookings = readLocalRecords('lakesideDemoBookings');
+        bookings.unshift({
+          reference: response.reference,
+          email: emailInput.value.trim(),
+          name: nameInput.value.trim(),
+          phone: bookingForm.querySelector('[name="phone"]').value.trim(),
+          event: eventName,
+          eventDate: activeEvent?.date || '',
+          location: activeEvent?.location || '',
+          participants,
+          amount: eventPrice * participants,
+          status: 'pending',
+          paymentStatus: 'awaiting_server_verification',
+          createdAt: new Date().toISOString()
+        });
+        localStorage.setItem('lakesideDemoBookings', JSON.stringify(bookings));
+        bookingFeedback.textContent = `Checkout returned reference ${response.reference}. Payment is not yet verified and this booking is not confirmed. Contact the LakeSide team while server-side verification is unavailable.`;
+        bookingFeedback.hidden = false;
+        payButton.textContent = 'Awaiting verification';
+        setToast('Payment submitted. Booking is awaiting verification.');
+      },
+      onClose: () => {
+        if (payButton.textContent !== 'Awaiting verification') {
+          payButton.disabled = false;
+          setToast('Checkout closed. No booking was confirmed.');
+        }
+      }
+    });
+    handler.openIframe();
+  } catch (error) {
+    payButton.disabled = false;
+    console.error('Unable to start Paystack checkout.', error);
+    setToast('Unable to start checkout. Please try again or contact our team.');
+  }
 });
 
 membershipForm?.addEventListener('submit', (event) => {

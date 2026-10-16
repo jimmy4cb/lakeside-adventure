@@ -40,9 +40,13 @@
           <p class="section-label">Welcome back</p>
           <h2 id="login-heading">Sign in to your account</h2>
           <p class="login-intro">Your next adventure is only a few steps away.</p>
-          <p class="prototype-notice">Admin access is limited to the configured email. This prototype stores credentials only in this browser and is not server-secured.</p>
+          <p class="prototype-notice">Client sign-in and bookings are a browser-only prototype. Use Paystack checkout for payments; a server is still required to verify transactions and confirm bookings.</p>
 
           <form id="loginForm">
+            <label for="clientName" id="clientNameLabel" hidden>
+              Full name
+              <input id="clientName" name="clientName" type="text" autocomplete="name" maxlength="100" />
+            </label>
             <label for="loginEmail">
               Email address
               <input
@@ -76,6 +80,16 @@
                 </button>
               </span>
             </label>
+            <label for="clientPasswordConfirm" id="clientPasswordConfirmLabel" hidden>
+              Confirm password
+              <input
+                id="clientPasswordConfirm"
+                name="clientPasswordConfirm"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+              />
+            </label>
             <label for="adminPasswordConfirm" id="adminPasswordConfirmLabel" hidden>
               Confirm admin password
               <input
@@ -99,6 +113,7 @@
             <button class="primary-btn full-width login-submit" type="submit">Sign in</button>
             <p class="login-feedback" id="loginFeedback" role="status" aria-live="polite" hidden></p>
           </form>
+          <button class="login-mode-toggle" id="clientSignupToggle" type="button">New client? Create an account</button>
 
           <p class="signup-prompt">
             New to LakeSide?
@@ -110,6 +125,7 @@
       </section>
     </main>
     <script src="admin-auth.js"></script>
+    <script src="client-auth.js"></script>
     <script src="login.js"></script>
   </body>
 </html>
