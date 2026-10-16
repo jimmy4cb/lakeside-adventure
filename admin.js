@@ -148,7 +148,6 @@ eventForm.addEventListener('submit', (event) => {
   saveRecords(eventStorageKey, records);
   eventForm.reset();
   renderDashboard();
-  }
 });
 
 document.addEventListener('click', (event) => {
@@ -159,6 +158,7 @@ document.addEventListener('click', (event) => {
     const remaining = getRecords(eventStorageKey).filter((item) => item.id !== target.dataset.removeEvent);
     saveRecords(eventStorageKey, remaining);
     renderDashboard();
+    }
   }
 
   if (target.dataset.confirmBooking) {
