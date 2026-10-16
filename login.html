@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sign in to your LakeSide Adventure Community account."
+    />
+    <title>Sign in | LakeSide Adventure Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="login-page">
+    <main class="login-layout">
+      <aside class="login-story">
+        <a href="index.html" class="brand login-brand" aria-label="LakeSide Adventure Community home">
+          <span class="brand-mark">LS</span>
+          <span class="brand-text">
+            <strong>LakeSide</strong>
+            <small>Adventure Community</small>
+          </span>
+        </a>
+        <div class="login-story-copy">
+          <p class="eyebrow">Adventure. Wellness. Community.</p>
+          <h1>Your next great story starts out there.</h1>
+          <p>Sign in to stay close to the people, places, and adventures that make LakeSide feel like home.</p>
+        </div>
+        <p class="login-story-caption">Find your people. Follow the trail. Feel more alive.</p>
+      </aside>
+
+      <section class="login-panel" aria-labelledby="login-heading">
+        <a class="login-back-link" href="index.html">← Back to LakeSide</a>
+        <div class="login-form-wrap">
+          <p class="section-label">Welcome back</p>
+          <h2 id="login-heading">Sign in to your account</h2>
+          <p class="login-intro">Your next adventure is only a few steps away.</p>
+          <p class="prototype-notice">Admin access is limited to the configured email. This prototype stores credentials only in this browser and is not server-secured.</p>
+
+          <form id="loginForm">
+            <label for="loginEmail">
+              Email address
+              <input
+                id="loginEmail"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+            </label>
+            <label for="loginPassword">
+              Password
+              <span class="password-field">
+                <input
+                  id="loginPassword"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="Enter your password"
+                  required
+                />
+                <button
+                  class="password-toggle"
+                  id="passwordToggle"
+                  type="button"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                >
+                  Show
+                </button>
+              </span>
+            </label>
+            <label for="adminPasswordConfirm" id="adminPasswordConfirmLabel" hidden>
+              Confirm admin password
+              <input
+                id="adminPasswordConfirm"
+                name="adminPasswordConfirm"
+                type="password"
+                autocomplete="new-password"
+                minlength="12"
+                placeholder="Enter the password again"
+              />
+            </label>
+
+            <div class="login-options">
+              <label class="remember-option">
+                <input type="checkbox" name="remember" />
+                <span>Remember me</span>
+              </label>
+              <a href="mailto:hello@lakesidecommunity.co.ke?subject=Help%20with%20signing%20in">Forgot password?</a>
+            </div>
+
+            <button class="primary-btn full-width login-submit" type="submit">Sign in</button>
+            <p class="login-feedback" id="loginFeedback" role="status" aria-live="polite" hidden></p>
+          </form>
+
+          <p class="signup-prompt">
+            New to LakeSide?
+            <a href="index.html#community">Join the community</a>
+          </p>
+          <p class="login-note">Need help? <a href="mailto:hello@lakesidecommunity.co.ke">Contact our team</a></p>
+        </div>
+        <footer class="login-footer">© 2026 LakeSide Adventure Community</footer>
+      </section>
+    </main>
+    <script src="admin-auth.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>

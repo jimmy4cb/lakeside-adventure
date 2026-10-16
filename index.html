@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LakeSide Adventure Community brings people together through hiking, cycling, wellness, and unforgettable outdoor adventures around Kisumu, Kenya."
+    />
+    <title>LakeSide Adventure Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a href="#home" class="brand" aria-label="LakeSide Adventure Community home">
+          <span class="brand-mark">LS</span>
+          <span class="brand-text">
+            <strong>LAKESIDE ADVENTURES</strong>
+            <small>Adventure. Wellness. Community.</small>
+          </span>
+        </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#adventures">Adventures</a>
+          <a href="#events">Events</a>
+          <a href="#stories">Blog</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#community">Community</a>
+          <a href="#partners">Partners</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#events" class="primary-btn nav-cta">Book an Adventure</a>
+          <a href="login.html" class="login-nav-link">Login</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Kisumu, Kenya</p>
+            <h1>EXPLORE. CONNECT. ADVENTURE.</h1>
+            <p class="lead">
+              Discover unforgettable outdoor experiences around Kisumu and beyond.
+            </p>
+            <div class="hero-actions">
+              <a href="#events" class="primary-btn">Book an Adventure</a>
+              <a href="#events" class="secondary-btn">View Upcoming Events</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro section-space" id="about">
+        <div class="container intro-grid">
+          <div>
+            <p class="section-label">About Us</p>
+            <h2>Adventure That Brings People Together</h2>
+            <p>
+              LakeSide Adventure Community is more than an adventure company — it is a people-powered,
+              community-based eco-adventure and wellness movement. We bring together hikers, cyclists,
+              nature lovers, and enthusiasts to explore, connect, and promote healthier lifestyles across
+              Kisumu and East Africa.
+            </p>
+            <div class="about-values">
+              <article><span>✳</span><div><strong>Community</strong><small>Adventure is better when shared.</small></div></article>
+              <article><span>♥</span><div><strong>Wellness</strong><small>We encourage active, healthy lifestyles.</small></div></article>
+              <article><span>⌁</span><div><strong>Sustainability</strong><small>We respect and protect the environment.</small></div></article>
+              <article><span>✓</span><div><strong>Safety</strong><small>Every adventure is responsibly planned.</small></div></article>
+            </div>
+            <a class="primary-btn" href="#community">Learn More</a>
+          </div>
+
+          <div class="about-visual">
+            <div class="about-photo" role="img" aria-label="A group enjoying an outdoor adventure"></div>
+            <div class="member-badge"><strong>500+</strong><span>Community Members</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space" id="adventures">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-label">What We Offer</p>
+            <h2>Our Adventures</h2>
+          </div>
+
+          <div class="adventure-grid">
+            <article class="adventure-card">
+              <div class="card-visual hiking"></div>
+              <div class="card-content">
+                <div class="card-meta"><span>🥾</span> Hiking</div>
+                <h3>Mabungo Caves Adventure</h3>
+                <p>Explore scenic trails, caves, and local landscapes with fellow adventure lovers.</p>
+                <ul>
+                  <li>Difficulty: Moderate</li>
+                  <li>Distance: 7 km</li>
+                  <li>Duration: 3 hours</li>
+                  <li>Price: KSh 1,800</li>
+                </ul>
+                <button class="small-btn" data-event="Mabungo Caves Adventure">View Adventure</button>
+              </div>
+            </article>
+
+            <article class="adventure-card">
+              <div class="card-visual cycling"></div>
+              <div class="card-content">
+                <div class="card-meta"><span>🚴</span> Cycling</div>
+                <h3>Kisumu Sunset Ride</h3>
+                <p>Experience the beauty of Kisumu through an unforgettable sunrise or sunset cycle.</p>
+                <ul>
+                  <li>Distance: 15 km</li>
+                  <li>Difficulty: Easy</li>
+                  <li>Start: Hippo Point</li>
+                  <li>Price: KSh 2,200</li>
+                </ul>
+                <button class="small-btn" data-event="Kisumu Sunset Ride">Book Ride</button>
+              </div>
+            </article>
+
+            <article class="adventure-card">
+              <div class="card-visual nature"></div>
+              <div class="card-content">
+                <div class="card-meta"><span>🌅</span> Nature</div>
+                <h3>Lake Experience & Picnic</h3>
+                <p>Relax by the water, enjoy a picnic, and connect with nature in a calm and scenic setting.</p>
+                <ul>
+                  <li>Activity: Nature walk + picnic</li>
+                  <li>Duration: 2–3 hours</li>
+                  <li>Group: Small groups</li>
+                  <li>Price: KSh 1,500</li>
+                </ul>
+                <button class="small-btn" data-event="Lake Experience & Picnic">Book Now</button>
+              </div>
+            </article>
+
+            <article class="adventure-card">
+              <div class="card-visual community"></div>
+              <div class="card-content">
+                <div class="card-meta"><span>🏕️</span> Community</div>
+                <h3>Weekend Community Meetup</h3>
+                <p>Join friendly group activities, wellness moments, and meaningful connection with others.</p>
+                <ul>
+                  <li>Activities: Hike, networking, games</li>
+                  <li>Age: 18+</li>
+                  <li>Price: KSh 1,200</li>
+                  <li>Meetup: Jomo Kenyatta Sports Ground</li>
+                </ul>
+                <button class="small-btn" data-event="Weekend Community Meetup">Join Us</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="events section-space alt-bg" id="events">
+        <div class="container">
+          <div class="section-header split-row">
+            <div>
+              <p class="section-label">Don't Miss Out</p>
+              <h2>Featured Events</h2>
+              <p class="event-date-note">These dates are from the published reference site. Contact us for the latest schedule.</p>
+            </div>
+            <a href="#contact" class="secondary-btn">View All Events&nbsp; →</a>
+          </div>
+
+          <div class="event-grid lakeside-featured-events" id="upcoming">
+            <article class="event-card">
+              <div class="event-badge">Hiking</div>
+              <h3>Twende Hike Korando - Kisian</h3>
+              <ul>
+                <li><span>📅</span> 14 Mar 2026</li>
+                <li><span>📍</span> Korando - Kisian</li>
+                <li><span>💰</span> KES 500</li>
+              </ul>
+              <div class="event-actions">
+                <button class="secondary-btn small" data-event="Twende Hike Korando - Kisian" data-price="500" data-date="14 Mar 2026" data-location="Korando - Kisian">Details</button>
+                <button class="primary-btn small" data-event="Twende Hike Korando - Kisian" data-price="500" data-date="14 Mar 2026" data-location="Korando - Kisian">Book Now</button>
+              </div>
+            </article>
+
+            <article class="event-card">
+              <div class="event-badge">Hiking</div>
+              <h3>Twende Kajulu Hike</h3>
+              <ul>
+                <li><span>📅</span> 21 Mar 2026</li>
+                <li><span>📍</span> Kajulu Hills</li>
+                <li><span>💰</span> KES 500</li>
+              </ul>
+              <div class="event-actions">
+                <button class="secondary-btn small" data-event="Twende Kajulu Hike" data-price="500" data-date="21 Mar 2026" data-location="Kajulu Hills">Details</button>
+                <button class="primary-btn small" data-event="Twende Kajulu Hike" data-price="500" data-date="21 Mar 2026" data-location="Kajulu Hills">Book Now</button>
+              </div>
+            </article>
+
+            <article class="event-card">
+              <div class="event-badge">Hiking</div>
+              <h3>Ndere Island Hike and Picnic</h3>
+              <ul>
+                <li><span>📅</span> 28 Mar 2026</li>
+                <li><span>📍</span> Ndere Island</li>
+                <li><span>💰</span> KES 3,000</li>
+              </ul>
+              <div class="event-actions">
+                <button class="secondary-btn small" data-event="Ndere Island Hike and Picnic" data-price="3000" data-date="28 Mar 2026" data-location="Ndere Island">Details</button>
+                <button class="primary-btn small" data-event="Ndere Island Hike and Picnic" data-price="3000" data-date="28 Mar 2026" data-location="Ndere Island">Book Now</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space" id="stories">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-label">From the trail</p>
+            <h2>Adventure stories</h2>
+          </div>
+          <div class="story-grid">
+            <article class="story-card">
+              <div class="story-image story-hiking"></div>
+              <div class="story-copy"><span>HIKING · KISUMU</span><h3>Finding your pace on the trail</h3><p>A little fresh air, a shared path, and a new view can change the whole day.</p></div>
+            </article>
+            <article class="story-card">
+              <div class="story-image story-lake"></div>
+              <div class="story-copy"><span>WELLNESS · LAKE VICTORIA</span><h3>Make room for outdoor wellness</h3><p>Step outside, move with intention, and reconnect with the people around you.</p></div>
+            </article>
+            <article class="story-card">
+              <div class="story-image story-community"></div>
+              <div class="story-copy"><span>COMMUNITY · LAKESIDE</span><h3>Better adventures, together</h3><p>Meet local adventurers and discover the places that make this community special.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space" id="gallery">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-label">Gallery</p>
+            <h2>Moments from the trail.</h2>
+          </div>
+
+          <div class="gallery-filters" aria-label="Gallery categories">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="hiking">Hiking</button>
+            <button class="filter-btn" data-filter="cycling">Cycling</button>
+            <button class="filter-btn" data-filter="nature">Nature</button>
+            <button class="filter-btn" data-filter="community">Community</button>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item hiking"><img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=900&q=80" alt="Hiking trail in the outdoors" /></figure>
+            <figure class="gallery-item cycling"><img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=900&q=80" alt="Cycling near the lake" /></figure>
+            <figure class="gallery-item nature"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Beautiful nature landscape" /></figure>
+            <figure class="gallery-item community"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80" alt="Community adventure meetup" /></figure>
+            <figure class="gallery-item hiking"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=80" alt="Mountain hiking path" /></figure>
+            <figure class="gallery-item nature"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Lake view and natural scenery" /></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space alt-bg" id="join-movement">
+        <div class="container story-callout">
+          <div>
+            <p class="section-label">Follow Our Adventures</p>
+            <h2>Join the Movement</h2>
+            <p>Follow us on social media for live updates, adventure highlights, and community stories.</p>
+          </div>
+          <div class="social-links">
+            <a href="https://instagram.com/lakeside_adventure_community" target="_blank" rel="noreferrer">
+              <span>Instagram</span><strong>@lakeside_adventure_community</strong>
+            </a>
+            <a href="https://tiktok.com/@lakeside.adventure" target="_blank" rel="noreferrer">
+              <span>TikTok</span><strong>@lakeside.adventure</strong>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noreferrer">
+              <span>Facebook</span><strong>LakeSide Adventures</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space alt-bg" id="community">
+        <div class="container community-grid">
+          <div>
+            <p class="section-label">Community</p>
+            <h2>Join the LakeSide community.</h2>
+            <p>
+              We believe adventure is better when shared. From early event announcements and member discounts to
+              wellness activities, hiking groups, and community meetups, our membership keeps you connected to a
+              vibrant network of active, like-minded people.
+            </p>
+            <div class="community-benefits">
+              <div><strong>Early access</strong><span>to new adventure announcements</span></div>
+              <div><strong>Member discounts</strong><span>on select events and activities</span></div>
+              <div><strong>Wellness circles</strong><span>for cycling, hiking, and mindful movement</span></div>
+            </div>
+          </div>
+
+          <form class="membership-form" id="membershipForm">
+            <h3>Become a member</h3>
+            <div class="field-grid two-col">
+              <label>
+                Name
+                <input type="text" name="name" placeholder="Your full name" required />
+              </label>
+              <label>
+                Phone
+                <input type="tel" name="phone" placeholder="07XXXXXXXX" required />
+              </label>
+            </div>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              Location
+              <input type="text" name="location" placeholder="Kisumu, Kenya" required />
+            </label>
+            <label>
+              Preferred activities
+              <select name="activities">
+                <option>Hiking</option>
+                <option>Cycling</option>
+                <option>Nature walks</option>
+                <option>Community events</option>
+                <option>Wellness activities</option>
+              </select>
+            </label>
+            <label>
+              How did you hear about us?
+              <input type="text" name="source" placeholder="Instagram, friend, WhatsApp, etc." />
+            </label>
+            <button type="submit" class="primary-btn full-width">Join the Community</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section-space" id="partners">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-label">Partners</p>
+            <h2>Partner with LakeSide.</h2>
+          </div>
+
+          <div class="partners-grid">
+            <article class="partner-card">
+              <h3>Tourism & hospitality</h3>
+              <p>Hotels, lodges, travel partners, and local guides collaborating to create memorable experiences.</p>
+            </article>
+            <article class="partner-card">
+              <h3>Corporate wellness</h3>
+              <p>Team-building activities, nature retreats, outdoor fitness sessions, and employee adventure days.</p>
+            </article>
+            <article class="partner-card">
+              <h3>Community programs</h3>
+              <p>Youth engagement, environmental campaigns, and community-driven wellness initiatives.</p>
+            </article>
+          </div>
+
+          <div class="cta-panel">
+            <div>
+              <p class="section-label">Plan a group adventure</p>
+              <h3>Corporate teams, schools, and organizations are welcome.</h3>
+            </div>
+            <a href="#contact" class="primary-btn">Become a Partner</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space alt-bg" id="contact">
+        <div class="container contact-grid">
+          <div>
+            <p class="section-label">Contact</p>
+            <h2>Connect with LakeSide Adventure Community.</h2>
+            <div class="contact-list">
+              <p><strong>📍</strong> Kisumu, Kenya</p>
+              <p><strong>📞</strong> +254 112 370 008</p>
+              <p><strong>📨</strong> hello@lakesidecommunity.co.ke</p>
+              <p><strong>📱</strong> @lakeside_adventure_community</p>
+            </div>
+            <a
+              class="whatsapp-link"
+              href="https://wa.me/254112370008?text=Hello%20LakeSide%20Adventure%20Community!%20I'd%20like%20to%20know%20more%20about%20your%20upcoming%20adventures."
+              target="_blank"
+              rel="noreferrer"
+            >
+              Chat with LakeSide
+            </a>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <h3>Send a message</h3>
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="phone" placeholder="Your phone number" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              Subject
+              <input type="text" name="subject" placeholder="How can we help?" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="4" placeholder="Tell us what you need..." required></textarea>
+            </label>
+            <button type="submit" class="primary-btn full-width">Send Message</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>© 2026 LakeSide Adventure Community. Adventure. Wellness. Community.</p>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#events">Events</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal hidden" id="bookingModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+        <button class="modal-close" aria-label="Close booking form">×</button>
+        <h3 id="bookingTitle">Book your slot</h3>
+        <form id="bookingForm">
+          <label>
+            Event
+            <input type="text" name="event" id="selectedEvent" readonly />
+          </label>
+          <input type="hidden" name="eventDate" id="selectedEventDate" />
+          <input type="hidden" name="eventLocation" id="selectedEventLocation" />
+          <p class="booking-total" id="bookingTotal" aria-live="polite">Choose an event to see your total.</p>
+          <div class="field-grid two-col">
+            <label>
+              Full name
+              <input type="text" name="fullName" placeholder="John Doe" required />
+            </label>
+            <label>
+              Phone number
+              <input type="tel" name="phone" placeholder="07XXXXXXXX" required />
+            </label>
+          </div>
+          <div class="field-grid two-col">
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              Number of participants
+              <input type="number" name="participants" min="1" max="12" value="1" required />
+            </label>
+          </div>
+          <label>
+            Emergency contact
+            <input type="text" name="emergencyContact" placeholder="Jane Doe, 07XXXXXXXX" />
+          </label>
+          <label>
+            Special requirements
+            <textarea name="requirements" rows="3" placeholder="Dietary concerns, accessibility, gear, etc."></textarea>
+          </label>
+          <p class="booking-feedback" id="bookingFeedback" role="status" aria-live="polite" hidden></p>
+          <p class="prototype-notice">Demo mode: bookings are saved only in this browser. Online Paystack checkout is not connected.</p>
+          <button type="submit" class="primary-btn full-width">Save demo booking</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="featured-events.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

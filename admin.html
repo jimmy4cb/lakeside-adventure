@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="LakeSide Adventures local admin dashboard prototype." />
+    <title>Admin demo | LakeSide Adventures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-page">
+    <header class="site-header">
+      <div class="container admin-nav">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">LS</span>
+          <span class="brand-text"><strong>LAKESIDE ADVENTURES</strong><small>Admin demo</small></span>
+        </a>
+        <div class="admin-nav-links">
+          <a href="index.html">View site</a>
+          <button class="secondary-btn small" id="adminSignOut" type="button">Sign out</button>
+        </div>
+      </div>
+    </header>
+    <main class="container admin-main">
+      <div class="prototype-notice admin-notice">
+        Demo only: event and booking data is stored in this browser, not shared or secure. No Paystack payment is processed.
+        In a live deployment, verify each payment in Paystack before confirming a booking.
+      </div>
+
+      <section class="admin-heading">
+        <p class="section-label">Operations</p>
+        <h1>Adventure dashboard</h1>
+        <p>Publish events, review demo booking records, and track payment confirmation status.</p>
+      </section>
+
+      <section class="dashboard-grid admin-stats" aria-label="Dashboard totals">
+        <article class="stat-box"><span>Events</span><strong id="eventCount">0</strong></article>
+        <article class="stat-box"><span>Bookings</span><strong id="bookingCount">0</strong></article>
+        <article class="stat-box"><span>Pending payments</span><strong id="pendingCount">0</strong></article>
+        <article class="stat-box"><span>Confirmed total</span><strong id="revenueTotal">KES 0</strong></article>
+      </section>
+
+      <section class="admin-section">
+        <div class="admin-section-heading">
+          <div><p class="section-label">Admin account</p><h2>Update sign-in details</h2></div>
+        </div>
+        <form id="adminAccountForm" class="admin-form">
+          <label>Current password<input type="password" name="currentPassword" autocomplete="current-password" required /></label>
+          <label>New admin email<input type="email" name="email" autocomplete="email" required /></label>
+          <label>New password<input type="password" name="password" autocomplete="new-password" minlength="12" required /></label>
+          <label>Confirm new password<input type="password" name="passwordConfirm" autocomplete="new-password" minlength="12" required /></label>
+          <button class="primary-btn admin-form-submit" type="submit">Update email and password</button>
+          <p class="login-feedback" id="adminAccountFeedback" role="status" aria-live="polite" hidden></p>
+        </form>
+      </section>
+
+      <section class="admin-section">
+        <div class="admin-section-heading">
+          <div><p class="section-label">Event management</p><h2>Post an event</h2></div>
+        </div>
+        <form id="eventForm" class="admin-form">
+          <label>Event name<input type="text" name="title" required maxlength="80" placeholder="e.g. Sunset ride by the lake" /></label>
+          <label>Category
+            <select name="category">
+              <option>Hiking</option><option>Cycling</option><option>Nature</option><option>Community</option>
+            </select>
+          </label>
+          <label>Date<input type="date" name="date" required /></label>
+          <label>Time<input type="time" name="time" required /></label>
+          <label>Location<input type="text" name="location" required maxlength="100" placeholder="Kisumu, Kenya" /></label>
+          <label>Price (KES)<input type="number" name="price" min="0" step="1" required /></label>
+          <label>Available slots<input type="number" name="capacity" min="1" step="1" required /></label>
+          <button class="primary-btn admin-form-submit" type="submit">Publish event</button>
+        </form>
+        <div class="admin-table-wrap">
+          <table>
+            <thead><tr><th>Event</th><th>Date & time</th><th>Location</th><th>Price</th><th>Slots</th><th></th></tr></thead>
+            <tbody id="adminEvents"></tbody>
+          </table>
+          <p class="empty-state" id="emptyEvents">No events posted yet.</p>
+        </div>
+      </section>
+
+      <section class="admin-section">
+        <div class="admin-section-heading">
+          <div><p class="section-label">Bookings & payments</p><h2>Transaction records</h2></div>
+        </div>
+        <div class="admin-table-wrap">
+          <table>
+            <thead><tr><th>Reference</th><th>Client</th><th>Event</th><th>Participants</th><th>Amount</th><th>Payment status</th><th>Action</th></tr></thead>
+            <tbody id="adminTransactions"></tbody>
+          </table>
+          <p class="empty-state" id="emptyTransactions">No bookings yet. Client demo bookings will appear here in this browser.</p>
+        </div>
+      </section>
+      <p class="admin-footnote">This dashboard is a visual prototype only. Do not use it to manage real customers, events, credentials, or payments.</p>
+    </main>
+    <script src="admin-auth.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
